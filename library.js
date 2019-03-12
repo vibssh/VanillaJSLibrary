@@ -1,10 +1,18 @@
-function $(selector) {
+const loopedElement = (nodeList) => {
+  let node;
+  Array.prototype.forEach.call(nodeList, (n) => {
+    node = n;
+  });
+  return node;
+}
+
+
+const $ = (selector) => {
   const settingsObj = {
     elements: document.querySelectorAll(selector),
     hide: () => {
-      Array.prototype.forEach.call(settingsObj.elements, (el) => {
-        el.style.display = 'none';
-      })
+      const el = loopedElement(settingsObj.elements);
+      el.style.display = 'none';
     }
   }
 
